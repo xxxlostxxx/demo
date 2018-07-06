@@ -6,10 +6,7 @@ import com.lst.utils.PageData;
 import com.lst.utils.Result;
 import com.lst.utils.ResultsFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +19,28 @@ public class DemoController{
 
     @Autowired
     private RedisService redisService;
-    @GetMapping(value = "demo")
-    public Result demo(){
+    @GetMapping(value = "demo/{id}")
+    public Result demo(@PathVariable String id){
         Result result  = new Result();
-        String demo = demoService.demo();
+        String demo = demoService.demo(id);
         result.data = demo;
         return result;
     }
     @GetMapping(value = "demo1")
+    public Result demo1(){
+        Result result  = new Result();
+        String demo = demoService.demo1();
+        result.data = demo;
+        return null;
+    }
+  /*  @GetMapping(value = "demo1")
     public Result demo1() throws Exception{
         Result result  = new Result();
         DCDemo javacTest = new DCDemo();
         String input_str = DCDemo.eval("input_str");
         result.data = input_str;
         return result;
-    }
+    }*/
 
     @RequestMapping("/redis/set")
     public Result redisSet(@RequestParam("value")String value){
