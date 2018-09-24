@@ -13,7 +13,7 @@ public class DemoApplication {
 
 	@RequestMapping(value = "/hello")
 	public String ddd(){
-		return "dhjuwqheuiwqh";
+		return "<h1>林存欢<h1>";
 	}
 	@RequestMapping(value = "/xxx")
 	public String dddd(){

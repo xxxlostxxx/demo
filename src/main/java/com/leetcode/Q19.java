@@ -45,23 +45,23 @@ public class Q19 {
      * 时间 O(n) 空间 O(n)
      * 一次扫描 从链表头部开始 扫描倒数第n个元素删除
      * 未知链表长度 需要迭代 需要迭代到最后 返查第n个 新建list记录
-     * @param listNode
-     * @param index
+     * @param
+     * @param
      */
-    public ListNode deleteByIndex(ListNode listNode ,int index) {
+    public ListNode deleteByIndex(ListNode head ,int n) {
         List list  = new ArrayList();
-        ListNode  copy = listNode;
-        while (listNode !=null) {
-            list.add(listNode);
-            listNode = listNode.next;
+        ListNode  copy = head;
+        while (head !=null) {
+            list.add(head);
+            head = head.next;
         }
 
-        if (index>list.size()) return copy;
-        if (index == list.size()) {
+        if (n>list.size()) return copy;
+        if (n == list.size()) {
             return copy.next;
         }
         // 需要取出被删除元素前一个元素
-        ListNode listNode1 =   (ListNode)list.get(list.size()-index-1);
+        ListNode listNode1 =   (ListNode)list.get(list.size()-n-1);
         ListNode listNode2 = listNode1.next;
         ListNode listNode3 =  listNode2.next;
         listNode1.next = listNode3;
