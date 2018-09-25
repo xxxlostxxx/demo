@@ -33,6 +33,20 @@ public class DemoController{
         result.data = demo;
         return null;
     }
+    @GetMapping(value = "demoAop")
+    public Result demoAop(){
+        Result result  = new Result();
+        String demo = demoService.testAop();
+        result.data = demo;
+        return null;
+    }
+    @GetMapping(value = "demoAop1")
+    public Result demoAop1(){
+        Result result  = new Result();
+        String demo = demoService.testAop1();
+        result.data = demo;
+        return null;
+    }
   /*  @GetMapping(value = "demo1")
     public Result demo1() throws Exception{
         Result result  = new Result();

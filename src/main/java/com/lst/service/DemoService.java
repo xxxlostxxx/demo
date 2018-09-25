@@ -7,4 +7,7 @@ public interface DemoService {
     String demo1();
 
     String demoPageData(Object pageData);
+
+    String testAop();
+    String testAop1();
 }

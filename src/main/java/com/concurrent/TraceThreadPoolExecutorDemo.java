@@ -47,5 +47,6 @@ public class TraceThreadPoolExecutorDemo extends ThreadPoolExecutor{
         for (int  i=0;i<5;i++) {
             pools.execute(new DivTask(100,i));
         }
+        System.out.println("down");
     }
 }

@@ -2,6 +2,7 @@ package com.lst.service.impl;
 
 
 import com.alibaba.fastjson.JSON;
+import com.lst.aop.Check;
 import com.lst.dao.DemoDao;
 import com.lst.entity.Demo;
 import com.lst.service.DemoService;
@@ -21,6 +22,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class DemoServiceImpl implements DemoService{
+
     @Autowired
     private DemoDao demoDao;
     private static final Logger logger = LoggerFactory.getLogger(DemoService.class);
@@ -48,6 +50,20 @@ public class DemoServiceImpl implements DemoService{
         boolean b = pageData instanceof PageData;
 
         System.out.println(b);
+        return null;
+    }
+
+    @Override
+    @Check
+    public String testAop() {
+        System.out.println("testAop 执行");
+        return null;
+    }
+
+    @Override
+    public String testAop1() {
+        System.out.println("testAop1 执行");
+
         return null;
     }
 }
