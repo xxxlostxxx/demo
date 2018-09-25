@@ -164,4 +164,8 @@
       
       
       Application ClassLoader 应用程序类加载器
+             rmi://
              
+             RMI 协议采用 JDK 标准的 java.rmi.* 实现，采用阻塞式短连接和 JDK 标准序列化方式。
+             
+             注意：如果正在使用 RMI 提供服务给外部访问 1，同时应用里依赖了老的 common-collections 包 2 的情况下，存在反序列化安全风险 3。
