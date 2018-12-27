@@ -1,7 +1,7 @@
 package com.lambda;
 
 /**
- * @author youzhu@dian.so
+ * @author youzhu@dian.com.so
  * @version 1.0.0
  * @Date 2018-09-04
  * @Copyright 北京伊电园网络科技有限公司 2016-2018 © 版权所有 京ICP备17000101号

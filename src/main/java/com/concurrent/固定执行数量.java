@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 防止等待队列过长
  * 是否必须
- * @author youzhu@dian.so
+ * @author youzhu@dian.com.so
  * @version 1.0.0
  * @Date 2018-12-27
  */

@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.scheduleService.dao.AlarmEventDOMapper">
+  <resultMap id="BaseResultMap" type="com.so.dian.woms.dao.model.AlarmEventDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="alarm_begin" jdbcType="TIMESTAMP" property="alarmBegin" />
+    <result column="alarm_end" jdbcType="TIMESTAMP" property="alarmEnd" />
+    <result column="alarm_duration" jdbcType="INTEGER" property="alarmDuration" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="all_clear_method" jdbcType="INTEGER" property="allClearMethod" />
+    <result column="target_id" jdbcType="INTEGER" property="targetId" />
+    <result column="target_type" jdbcType="INTEGER" property="targetType" />
+    <result column="bd_id" jdbcType="INTEGER" property="bdId" />
+    <result column="bd_name" jdbcType="VARCHAR" property="bdName" />
+    <result column="cm_id" jdbcType="INTEGER" property="cmId" />
+    <result column="cm_name" jdbcType="VARCHAR" property="cmName" />
+    <result column="bdm_id" jdbcType="INTEGER" property="bdmId" />
+    <result column="bdm_name" jdbcType="VARCHAR" property="bdmName" />
+    <result column="dm_id" jdbcType="INTEGER" property="dmId" />
+    <result column="dm_name" jdbcType="VARCHAR" property="dmName" />
+    <result column="all_clear_user" jdbcType="INTEGER" property="allClearUser" />
+    <result column="all_clear_time" jdbcType="TIMESTAMP" property="allClearTime" />
+    <result column="clear_reason" jdbcType="VARCHAR" property="clearReason" />
+    <result column="alarm_update_time" jdbcType="TIMESTAMP" property="alarmUpdateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, alarm_begin, alarm_end, alarm_duration, priority, all_clear_method, target_id, 
+    target_type, bd_id, bd_name, cm_id, cm_name, bdm_id, bdm_name, dm_id, dm_name, all_clear_user, 
+    all_clear_time, clear_reason, alarm_update_time, create_time, update_time, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from alarm_event
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from alarm_event
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.so.dian.woms.dao.model.AlarmEventDO">
+    insert into alarm_event (id, type, alarm_begin, 
+      alarm_end, alarm_duration, priority, 
+      all_clear_method, target_id, target_type, 
+      bd_id, bd_name, cm_id, 
+      cm_name, bdm_id, bdm_name, 
+      dm_id, dm_name, all_clear_user, 
+      all_clear_time, clear_reason, alarm_update_time, 
+      create_time, update_time, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{alarmBegin,jdbcType=TIMESTAMP}, 
+      #{alarmEnd,jdbcType=TIMESTAMP}, #{alarmDuration,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
+      #{allClearMethod,jdbcType=INTEGER}, #{targetId,jdbcType=INTEGER}, #{targetType,jdbcType=INTEGER}, 
+      #{bdId,jdbcType=INTEGER}, #{bdName,jdbcType=VARCHAR}, #{cmId,jdbcType=INTEGER}, 
+      #{cmName,jdbcType=VARCHAR}, #{bdmId,jdbcType=INTEGER}, #{bdmName,jdbcType=VARCHAR}, 
+      #{dmId,jdbcType=INTEGER}, #{dmName,jdbcType=VARCHAR}, #{allClearUser,jdbcType=INTEGER}, 
+      #{allClearTime,jdbcType=TIMESTAMP}, #{clearReason,jdbcType=VARCHAR}, #{alarmUpdateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.so.dian.woms.dao.model.AlarmEventDO">
+    insert into alarm_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="alarmBegin != null">
+        alarm_begin,
+      </if>
+      <if test="alarmEnd != null">
+        alarm_end,
+      </if>
+      <if test="alarmDuration != null">
+        alarm_duration,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="allClearMethod != null">
+        all_clear_method,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+      <if test="targetType != null">
+        target_type,
+      </if>
+      <if test="bdId != null">
+        bd_id,
+      </if>
+      <if test="bdName != null">
+        bd_name,
+      </if>
+      <if test="cmId != null">
+        cm_id,
+      </if>
+      <if test="cmName != null">
+        cm_name,
+      </if>
+      <if test="bdmId != null">
+        bdm_id,
+      </if>
+      <if test="bdmName != null">
+        bdm_name,
+      </if>
+      <if test="dmId != null">
+        dm_id,
+      </if>
+      <if test="dmName != null">
+        dm_name,
+      </if>
+      <if test="allClearUser != null">
+        all_clear_user,
+      </if>
+      <if test="allClearTime != null">
+        all_clear_time,
+      </if>
+      <if test="clearReason != null">
+        clear_reason,
+      </if>
+      <if test="alarmUpdateTime != null">
+        alarm_update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="alarmBegin != null">
+        #{alarmBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmEnd != null">
+        #{alarmEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmDuration != null">
+        #{alarmDuration,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="allClearMethod != null">
+        #{allClearMethod,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="targetType != null">
+        #{targetType,jdbcType=INTEGER},
+      </if>
+      <if test="bdId != null">
+        #{bdId,jdbcType=INTEGER},
+      </if>
+      <if test="bdName != null">
+        #{bdName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmId != null">
+        #{cmId,jdbcType=INTEGER},
+      </if>
+      <if test="cmName != null">
+        #{cmName,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmId != null">
+        #{bdmId,jdbcType=INTEGER},
+      </if>
+      <if test="bdmName != null">
+        #{bdmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dmId != null">
+        #{dmId,jdbcType=INTEGER},
+      </if>
+      <if test="dmName != null">
+        #{dmName,jdbcType=VARCHAR},
+      </if>
+      <if test="allClearUser != null">
+        #{allClearUser,jdbcType=INTEGER},
+      </if>
+      <if test="allClearTime != null">
+        #{allClearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clearReason != null">
+        #{clearReason,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmUpdateTime != null">
+        #{alarmUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.so.dian.woms.dao.model.AlarmEventDO">
+    update alarm_event
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="alarmBegin != null">
+        alarm_begin = #{alarmBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmEnd != null">
+        alarm_end = #{alarmEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmDuration != null">
+        alarm_duration = #{alarmDuration,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="allClearMethod != null">
+        all_clear_method = #{allClearMethod,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="targetType != null">
+        target_type = #{targetType,jdbcType=INTEGER},
+      </if>
+      <if test="bdId != null">
+        bd_id = #{bdId,jdbcType=INTEGER},
+      </if>
+      <if test="bdName != null">
+        bd_name = #{bdName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmId != null">
+        cm_id = #{cmId,jdbcType=INTEGER},
+      </if>
+      <if test="cmName != null">
+        cm_name = #{cmName,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmId != null">
+        bdm_id = #{bdmId,jdbcType=INTEGER},
+      </if>
+      <if test="bdmName != null">
+        bdm_name = #{bdmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dmId != null">
+        dm_id = #{dmId,jdbcType=INTEGER},
+      </if>
+      <if test="dmName != null">
+        dm_name = #{dmName,jdbcType=VARCHAR},
+      </if>
+      <if test="allClearUser != null">
+        all_clear_user = #{allClearUser,jdbcType=INTEGER},
+      </if>
+      <if test="allClearTime != null">
+        all_clear_time = #{allClearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clearReason != null">
+        clear_reason = #{clearReason,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmUpdateTime != null">
+        alarm_update_time = #{alarmUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.so.dian.woms.dao.model.AlarmEventDO">
+    update alarm_event
+    set type = #{type,jdbcType=INTEGER},
+      alarm_begin = #{alarmBegin,jdbcType=TIMESTAMP},
+      alarm_end = #{alarmEnd,jdbcType=TIMESTAMP},
+      alarm_duration = #{alarmDuration,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      all_clear_method = #{allClearMethod,jdbcType=INTEGER},
+      target_id = #{targetId,jdbcType=INTEGER},
+      target_type = #{targetType,jdbcType=INTEGER},
+      bd_id = #{bdId,jdbcType=INTEGER},
+      bd_name = #{bdName,jdbcType=VARCHAR},
+      cm_id = #{cmId,jdbcType=INTEGER},
+      cm_name = #{cmName,jdbcType=VARCHAR},
+      bdm_id = #{bdmId,jdbcType=INTEGER},
+      bdm_name = #{bdmName,jdbcType=VARCHAR},
+      dm_id = #{dmId,jdbcType=INTEGER},
+      dm_name = #{dmName,jdbcType=VARCHAR},
+      all_clear_user = #{allClearUser,jdbcType=INTEGER},
+      all_clear_time = #{allClearTime,jdbcType=TIMESTAMP},
+      clear_reason = #{clearReason,jdbcType=VARCHAR},
+      alarm_update_time = #{alarmUpdateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.scheduleService.model.AlarmEventDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="alarm_begin" jdbcType="TIMESTAMP" property="alarmBegin" />
+    <result column="alarm_end" jdbcType="TIMESTAMP" property="alarmEnd" />
+    <result column="alarm_duration" jdbcType="INTEGER" property="alarmDuration" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="all_clear_method" jdbcType="INTEGER" property="allClearMethod" />
+    <result column="target_id" jdbcType="INTEGER" property="targetId" />
+    <result column="target_type" jdbcType="INTEGER" property="targetType" />
+    <result column="bd_id" jdbcType="INTEGER" property="bdId" />
+    <result column="bd_name" jdbcType="VARCHAR" property="bdName" />
+    <result column="cm_id" jdbcType="INTEGER" property="cmId" />
+    <result column="cm_name" jdbcType="VARCHAR" property="cmName" />
+    <result column="bdm_id" jdbcType="INTEGER" property="bdmId" />
+    <result column="bdm_name" jdbcType="VARCHAR" property="bdmName" />
+    <result column="dm_id" jdbcType="INTEGER" property="dmId" />
+    <result column="dm_name" jdbcType="VARCHAR" property="dmName" />
+    <result column="all_clear_user" jdbcType="INTEGER" property="allClearUser" />
+    <result column="all_clear_time" jdbcType="TIMESTAMP" property="allClearTime" />
+    <result column="clear_reason" jdbcType="VARCHAR" property="clearReason" />
+    <result column="alarm_update_time" jdbcType="TIMESTAMP" property="alarmUpdateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, alarm_begin, alarm_end, alarm_duration, priority, all_clear_method, target_id, 
+    target_type, bd_id, bd_name, cm_id, cm_name, bdm_id, bdm_name, dm_id, dm_name, all_clear_user, 
+    all_clear_time, clear_reason, alarm_update_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from alarm_event
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from alarm_event
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.scheduleService.model.AlarmEventDO">
+    insert into alarm_event (id, type, alarm_begin, 
+      alarm_end, alarm_duration, priority, 
+      all_clear_method, target_id, target_type, 
+      bd_id, bd_name, cm_id, 
+      cm_name, bdm_id, bdm_name, 
+      dm_id, dm_name, all_clear_user, 
+      all_clear_time, clear_reason, alarm_update_time, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{alarmBegin,jdbcType=TIMESTAMP}, 
+      #{alarmEnd,jdbcType=TIMESTAMP}, #{alarmDuration,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
+      #{allClearMethod,jdbcType=INTEGER}, #{targetId,jdbcType=INTEGER}, #{targetType,jdbcType=INTEGER}, 
+      #{bdId,jdbcType=INTEGER}, #{bdName,jdbcType=VARCHAR}, #{cmId,jdbcType=INTEGER}, 
+      #{cmName,jdbcType=VARCHAR}, #{bdmId,jdbcType=INTEGER}, #{bdmName,jdbcType=VARCHAR}, 
+      #{dmId,jdbcType=INTEGER}, #{dmName,jdbcType=VARCHAR}, #{allClearUser,jdbcType=INTEGER}, 
+      #{allClearTime,jdbcType=TIMESTAMP}, #{clearReason,jdbcType=VARCHAR}, #{alarmUpdateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.scheduleService.model.AlarmEventDO">
+    insert into alarm_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="alarmBegin != null">
+        alarm_begin,
+      </if>
+      <if test="alarmEnd != null">
+        alarm_end,
+      </if>
+      <if test="alarmDuration != null">
+        alarm_duration,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="allClearMethod != null">
+        all_clear_method,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+      <if test="targetType != null">
+        target_type,
+      </if>
+      <if test="bdId != null">
+        bd_id,
+      </if>
+      <if test="bdName != null">
+        bd_name,
+      </if>
+      <if test="cmId != null">
+        cm_id,
+      </if>
+      <if test="cmName != null">
+        cm_name,
+      </if>
+      <if test="bdmId != null">
+        bdm_id,
+      </if>
+      <if test="bdmName != null">
+        bdm_name,
+      </if>
+      <if test="dmId != null">
+        dm_id,
+      </if>
+      <if test="dmName != null">
+        dm_name,
+      </if>
+      <if test="allClearUser != null">
+        all_clear_user,
+      </if>
+      <if test="allClearTime != null">
+        all_clear_time,
+      </if>
+      <if test="clearReason != null">
+        clear_reason,
+      </if>
+      <if test="alarmUpdateTime != null">
+        alarm_update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="alarmBegin != null">
+        #{alarmBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmEnd != null">
+        #{alarmEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmDuration != null">
+        #{alarmDuration,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="allClearMethod != null">
+        #{allClearMethod,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="targetType != null">
+        #{targetType,jdbcType=INTEGER},
+      </if>
+      <if test="bdId != null">
+        #{bdId,jdbcType=INTEGER},
+      </if>
+      <if test="bdName != null">
+        #{bdName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmId != null">
+        #{cmId,jdbcType=INTEGER},
+      </if>
+      <if test="cmName != null">
+        #{cmName,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmId != null">
+        #{bdmId,jdbcType=INTEGER},
+      </if>
+      <if test="bdmName != null">
+        #{bdmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dmId != null">
+        #{dmId,jdbcType=INTEGER},
+      </if>
+      <if test="dmName != null">
+        #{dmName,jdbcType=VARCHAR},
+      </if>
+      <if test="allClearUser != null">
+        #{allClearUser,jdbcType=INTEGER},
+      </if>
+      <if test="allClearTime != null">
+        #{allClearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clearReason != null">
+        #{clearReason,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmUpdateTime != null">
+        #{alarmUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.scheduleService.model.AlarmEventDO">
+    update alarm_event
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="alarmBegin != null">
+        alarm_begin = #{alarmBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmEnd != null">
+        alarm_end = #{alarmEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alarmDuration != null">
+        alarm_duration = #{alarmDuration,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="allClearMethod != null">
+        all_clear_method = #{allClearMethod,jdbcType=INTEGER},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="targetType != null">
+        target_type = #{targetType,jdbcType=INTEGER},
+      </if>
+      <if test="bdId != null">
+        bd_id = #{bdId,jdbcType=INTEGER},
+      </if>
+      <if test="bdName != null">
+        bd_name = #{bdName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmId != null">
+        cm_id = #{cmId,jdbcType=INTEGER},
+      </if>
+      <if test="cmName != null">
+        cm_name = #{cmName,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmId != null">
+        bdm_id = #{bdmId,jdbcType=INTEGER},
+      </if>
+      <if test="bdmName != null">
+        bdm_name = #{bdmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dmId != null">
+        dm_id = #{dmId,jdbcType=INTEGER},
+      </if>
+      <if test="dmName != null">
+        dm_name = #{dmName,jdbcType=VARCHAR},
+      </if>
+      <if test="allClearUser != null">
+        all_clear_user = #{allClearUser,jdbcType=INTEGER},
+      </if>
+      <if test="allClearTime != null">
+        all_clear_time = #{allClearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clearReason != null">
+        clear_reason = #{clearReason,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmUpdateTime != null">
+        alarm_update_time = #{alarmUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.scheduleService.model.AlarmEventDO">
+    update alarm_event
+    set type = #{type,jdbcType=INTEGER},
+      alarm_begin = #{alarmBegin,jdbcType=TIMESTAMP},
+      alarm_end = #{alarmEnd,jdbcType=TIMESTAMP},
+      alarm_duration = #{alarmDuration,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      all_clear_method = #{allClearMethod,jdbcType=INTEGER},
+      target_id = #{targetId,jdbcType=INTEGER},
+      target_type = #{targetType,jdbcType=INTEGER},
+      bd_id = #{bdId,jdbcType=INTEGER},
+      bd_name = #{bdName,jdbcType=VARCHAR},
+      cm_id = #{cmId,jdbcType=INTEGER},
+      cm_name = #{cmName,jdbcType=VARCHAR},
+      bdm_id = #{bdmId,jdbcType=INTEGER},
+      bdm_name = #{bdmName,jdbcType=VARCHAR},
+      dm_id = #{dmId,jdbcType=INTEGER},
+      dm_name = #{dmName,jdbcType=VARCHAR},
+      all_clear_user = #{allClearUser,jdbcType=INTEGER},
+      all_clear_time = #{allClearTime,jdbcType=TIMESTAMP},
+      clear_reason = #{clearReason,jdbcType=VARCHAR},
+      alarm_update_time = #{alarmUpdateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
