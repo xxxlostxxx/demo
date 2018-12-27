@@ -1,6 +1,5 @@
 package com.concurrent;
 
-import com.alibaba.fastjson.JSONObject;
 
 public class jucQueueDemo {
     static Object a  = new Object();

@@ -66,7 +66,7 @@ public class CyclicBarrierDemo {
         Thread[] allSoldier = new Thread[N];
         boolean flag = false;
         CyclicBarrier cyclic = new CyclicBarrier(N,new BarrierRun(flag,N));
-
+        int num = 10000;
         // 设置屏障点，主要是为了执行这个方法
         System.out.println("集合队伍！");
         for (int i = 0; i<N ; i++){

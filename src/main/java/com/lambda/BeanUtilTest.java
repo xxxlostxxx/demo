@@ -4,7 +4,6 @@ package com.lambda;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.stream.Stream;
-import org.springframework.beans.BeanUtils;
 
 /**
  * @author youzhu@dian.so
@@ -46,17 +45,14 @@ public class BeanUtilTest {
         Long begin2 =System.currentTimeMillis();
 
         DemoBean2 demoBean21 = new DemoBean2();
-        BeanUtils.copyProperties(demoBean,demoBean21);
 
 
         Long end2 =System.currentTimeMillis();
 
         long l = System.currentTimeMillis();
-        BeanUtils.copyProperties(new DemoBean2(),demoBean);
         long l1 = System.currentTimeMillis();
         System.gc();
         long l3 = System.currentTimeMillis();
-        BeanUtils.copyProperties(new DemoBean2(),demoBean);
         long l2 = System.currentTimeMillis();
         System.out.println(l1-l);
         System.out.println(l2-l3);

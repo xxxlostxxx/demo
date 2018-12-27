@@ -1,5 +1,8 @@
 package com.anno;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Demo1 {
 
     public Demo1() {
@@ -14,6 +17,19 @@ public class Demo1 {
     }
 
     public static void main(String[] args) {
-        new Demo1();
+        Lock lock = new ReentrantLock();
+        lock.lock();
+        new Thread(() ->{
+            try {
+                System.out.println(3333);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println(1234);
+                lock.unlock();
+            }
+        }).start();
+
+
     }
 }

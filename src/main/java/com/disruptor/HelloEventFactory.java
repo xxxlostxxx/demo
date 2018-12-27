@@ -1,3 +1,4 @@
+/*
 package com.disruptor;
 
 import com.lmax.disruptor.EventFactory;
@@ -8,4 +9,6 @@ public class HelloEventFactory implements EventFactory<HelloEvent> {
     public HelloEvent newInstance() {
         return new HelloEvent() ;
     }
+
 }
+*/

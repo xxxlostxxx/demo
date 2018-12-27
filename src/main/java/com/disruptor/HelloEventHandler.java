@@ -1,3 +1,4 @@
+/*
 package com.disruptor;
 
 import com.lmax.disruptor.EventHandler;
@@ -9,3 +10,4 @@ public class HelloEventHandler implements EventHandler<HelloEvent> {
         System.out.println(helloEvent.getValue());
     }
 }
+*/
